@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Route::post('/colleges', [CollegeController::class, 'store'])->name('colleges.st
 Route::get('/colleges/{college}', [CollegeController::class, 'show'])->name('colleges.show');
 Route::get('/colleges/{college}/edit', [CollegeController::class, 'edit'])->name('colleges.edit');
 Route::put('/colleges/{college}', [CollegeController::class, 'update'])->name('colleges.update');
+Route::delete('/colleges/{college}', [CollegeController::class, 'destroy'])->name('colleges.destroy');
 
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
 Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
