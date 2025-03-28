@@ -15,14 +15,14 @@ class StudentController extends Controller
 
         if(request('college_id'))
         {
-            $students = Student::where('college_id', request('college_id'))->orderBy('last_name')->get();
+            $students = Student::where('college_id', request('college_id'))->orderBy('name')->get();
         }
         else
         {
             $students = Student::all();
         }
 
-        return view('students.index', compact('students'));
+        return view('students.index', compact('students', 'colleges'));
     }
 
     //create a new student
