@@ -54,12 +54,12 @@
                             <div class="collapse" id="forms">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="{{ url('forms/forms.html') }}">
+                                        <a href="{{ route('colleges.index') }}">
                                             <span class="sub-item">Index</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('forms/forms.html') }}">
+                                        <a href="{{ route('colleges.create') }}">
                                             <span class="sub-item">Create</span>
                                         </a>
                                     </li>
@@ -81,7 +81,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('tables/tables.html') }}">
+                                        <a href="{{ route('students.create') }}">
                                             <span class="sub-item">Create</span>
                                         </a>
                                     </li>

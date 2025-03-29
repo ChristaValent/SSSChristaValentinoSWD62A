@@ -28,8 +28,9 @@ class StudentController extends Controller
     //create a new student
     public function create()
     {
+        $students = new Student();
         $colleges = College::orderBy('name')->pluck('name', 'id');
-        return view('students.create', compact('colleges'));
+        return view('students.create', compact('students', 'colleges'));
     }
 
     //store the new student

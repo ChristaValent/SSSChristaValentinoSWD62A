@@ -5,6 +5,13 @@ document.getElementById('filter_college_id').addEventListener('change',
     }
 )
 
+document.getElementById('sort_student').addEventListener('change',
+    function () {
+        
+    }
+)
+
+
 document.querySelectorAll('.btn-delete').forEach((button) => {
     button.addEventListener('click', function(event){
         event.preventDefault();
