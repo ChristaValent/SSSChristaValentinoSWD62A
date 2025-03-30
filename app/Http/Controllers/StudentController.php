@@ -12,15 +12,23 @@ class StudentController extends Controller
     public function index()
     {
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
+        $sortOrder = request('sort_order');
+        $studentsQuery = Student::query();
 
-        if(request('college_id'))
-        {
-            $students = Student::where('college_id', request('college_id'))->orderBy('name')->get();
+        if (request('college_id')) {
+            $studentsQuery = Student::where('college_id', request('college_id'));
+        } else {
+            $studentsQuery = Student::query();
         }
-        else
-        {
-            $students = Student::all();
+
+        // Apply sorting
+        if ($sortOrder === 'asc' || $sortOrder === 'desc'){
+            $studentsQuery->orderBy('name', $sortOrder);
+        } elseif ($sortOrder === 'none' || $sortOrder === null) {
+            $studentsQuery->orderBy('id'); // Default sorting by student ID
         }
+
+        $students = $studentsQuery->get();
 
         return view('students.index', compact('students', 'colleges'));
     }
@@ -68,14 +76,14 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:students,email,'.$id, // Email validation and also check that email has not been previously used
+            'email' => 'required|email|unique:students,email,' . $id, // Email validation and also check that email has not been previously used
             'phone' => 'required|regex:/^\d{8}$/', // Phone number validation with regex to make sure it's 8 digits
             'dob' => 'required',
             'college_id' => 'required|exists:colleges,id', // check that the college_id exists in the colleges table
         ]);
 
         $student = Student::find($id); //find the student
-        $student->update($request->all()); 
+        $student->update($request->all());
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
 

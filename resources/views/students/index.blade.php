@@ -20,9 +20,19 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th id="sort_students" style="cursor: pointer">
-                                            Name
-                                            <i class="fa fa-arrow-up ms-1"></i>
+                                        <th id="sort_student" style="cursor: pointer">
+                                            <a href="{{ route('students.index', ['sort_order' => request('sort_order')]) }}" class="text-decoration-none text-dark">
+                                                Name
+                                                @if (request('sort_order') === 'asc')
+                                                    <i class="fa fa-arrow-up ms-1"></i>
+                                                @elseif (request('sort_order') === 'desc')
+                                                    <i class="fa fa-arrow-down ms-1"></i>
+                                                @elseif (request('sort_order') === 'none')
+                                                    <i class="fa fa-sort ms-1"></i>
+                                                @else
+                                                    <i class="fa fa-sort ms-1"></i>
+                                                @endif
+                                            </a>
                                         </th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -44,7 +54,7 @@
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="{{ route('students.show', $student->id) }}"
-                                                            class="btn btn-link btn-success btn-md" data-bs-toggle="tooltip" 
+                                                            class="btn btn-link btn-success btn-md" data-bs-toggle="tooltip"
                                                             title="Show">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
@@ -53,7 +63,8 @@
                                                             title="Edit">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <form id="form-delete" action="{{ route('students.destroy', $student->id) }}"
+                                                        <form id="form-delete"
+                                                            action="{{ route('students.destroy', $student->id) }}"
                                                             method="POST" style="display: inline-block;">
                                                             @csrf
                                                             @method('DELETE')
