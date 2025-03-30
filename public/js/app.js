@@ -5,11 +5,14 @@ document.getElementById('filter_college_id').addEventListener('change',
     }
 )
 
-document.getElementById('sort_student').addEventListener('change',
-    function () {
-        
-    }
-)
+// document.getElementById('sort_student').addEventListener('click',
+//     function () {
+//         // let sortValue = this.value || this.options[this.selectedIndex].value;
+//         // window.location.href= window.location.href.split('?')[0] + '?name=' + sortValue
+
+//         alert('Sort by: ' + this.value)
+//     }
+// )
 
 
 document.querySelectorAll('.btn-delete').forEach((button) => {

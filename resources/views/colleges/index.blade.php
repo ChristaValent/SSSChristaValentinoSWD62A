@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Students List')
+@section('title', 'Colleges List')
 
 @section('content')
     <main style="margin-top: 100px">

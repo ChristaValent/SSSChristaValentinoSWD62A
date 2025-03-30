@@ -19,9 +19,9 @@ class CollegeController extends Controller
     public function create()
     {
         //create a new college
-        $colleges = new College();
+        $college = new College();
 
-        return view('colleges.create', compact('colleges'));
+        return view('colleges.create', compact('college'));
     }
 
     //store the data inputted by the user

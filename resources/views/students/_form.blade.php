@@ -9,7 +9,7 @@
                                 <div class="form-group">
                                     <label for="name">Name and Surname</label>
                                     <input type="text" class="form-control input-full" id="name" name="name"
-                                        value="{{ old('name', $students->name) }}" placeholder="Enter Name and Surname" />
+                                        value="{{ old('name', $student->name) }}" placeholder="Enter Name and Surname" />
                                     @error('name')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
                                         <input type="text" class="form-control input-full" id="phone"
-                                            name="phone" value="{{ old('phone', $students->phone) }}"
+                                            name="phone" value="{{ old('phone', $student->phone) }}"
                                             placeholder="Enter Phone number" />
                                     @error('phone')
                                         <div class="alert alert-danger mt-2">
@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ old('email', $students->email) }}" placeholder="Enter Email" />
+                                        value="{{ old('email', $student->email) }}" placeholder="Enter Email" />
                                     @error('email')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label for="dob">Date of Birth</label>
                                     <input type="date" class="form-control" id="dob" name="dob"
-                                        value="{{ old('dob', $students->dob) }}" placeholder="Enter DOB" />
+                                        value="{{ old('dob', $student->dob) }}" placeholder="Enter DOB" />
                                     @error('dob')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
@@ -56,7 +56,7 @@
                                     <select class="form-select" name="college_id" id="college_id">
                                         @foreach ($colleges as $id => $name)
                                             <option
-                                                {{ $id == old('college_id', $students->college_id ?? '') ? 'selected' : '' }}
+                                                {{ $id == old('college_id', $student->college_id ?? '') ? 'selected' : '' }}
                                                 value="{{ $id }}">{{ $name }}</option>
                                         @endforeach
                                     </select>

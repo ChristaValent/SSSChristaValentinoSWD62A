@@ -9,7 +9,7 @@
                                 <div class="form-group">
                                     <label for="name">College Name</label>
                                     <input type="text" class="form-control input-full" id="name" name="name"
-                                        value="{{ old('name', $colleges->name) }}" placeholder="Enter College Name" />
+                                        value="{{ old('name', $college->name) }}" placeholder="Enter College Name" />
                                     @error('name')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <input type="address" class="form-control" id="address" name="address"
-                                        value="{{ old('address', $colleges->address) }}" placeholder="Enter Address" />
+                                        value="{{ old('address', $college->address) }}" placeholder="Enter Address" />
                                     @error('address')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
