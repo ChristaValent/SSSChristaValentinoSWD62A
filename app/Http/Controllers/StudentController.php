@@ -13,13 +13,12 @@ class StudentController extends Controller
     {
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
         $sortOrder = request('sort_order');
+        
         $studentsQuery = Student::query();
 
         if (request('college_id')) {
             $studentsQuery = Student::where('college_id', request('college_id'));
-        } else {
-            $studentsQuery = Student::query();
-        }
+        } 
 
         // Apply sorting
         if ($sortOrder === 'asc' || $sortOrder === 'desc'){

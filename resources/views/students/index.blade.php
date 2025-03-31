@@ -21,18 +21,16 @@
                                     <tr>
                                         <th>Id</th>
                                         <th id="sort_student" style="cursor: pointer">
-                                            <a href="{{ route('students.index', ['sort_order' => request('sort_order')]) }}" class="text-decoration-none text-dark">
-                                                Name
-                                                @if (request('sort_order') === 'asc')
-                                                    <i class="fa fa-arrow-up ms-1"></i>
-                                                @elseif (request('sort_order') === 'desc')
-                                                    <i class="fa fa-arrow-down ms-1"></i>
-                                                @elseif (request('sort_order') === 'none')
-                                                    <i class="fa fa-sort ms-1"></i>
-                                                @else
-                                                    <i class="fa fa-sort ms-1"></i>
-                                                @endif
-                                            </a>
+                                            Name
+                                            @if (request('sort_order') === 'asc')
+                                                <i class="fa fa-arrow-up ms-1"></i>
+                                            @elseif (request('sort_order') === 'desc')
+                                                <i class="fa fa-arrow-down ms-1"></i>
+                                            @elseif (request('sort_order') === 'none')
+                                                <i class="fa fa-sort ms-1"></i>
+                                            @else
+                                                <i class="fa fa-sort ms-1"></i>
+                                            @endif
                                         </th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -42,6 +40,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if ($message = session('success'))
+                                        <div class="alert alert-success">{{ $message }}</div>
+                                    @endif
                                     @if ($students->count())
                                         @foreach ($students as $student)
                                             <tr>

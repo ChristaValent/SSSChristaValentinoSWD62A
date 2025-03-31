@@ -31,8 +31,7 @@
                     <div class="card-action">
                         <a href="{{ route('colleges.index') }}" class="btn btn-success">Back</a>
                         <a href="{{ route('colleges.edit', $college->id) }}" class="btn btn-primary">Edit</a>
-                        <form id="form-delete" action="{{ route('colleges.destroy', $college->id) }}"
-                            method="POST" style="display: inline-block;">
+                        <form action="{{ route('colleges.destroy', $college->id) }}" method="POST" class="d-inline btn-delete">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

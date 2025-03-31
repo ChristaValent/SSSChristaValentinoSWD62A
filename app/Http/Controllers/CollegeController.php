@@ -71,7 +71,7 @@ class CollegeController extends Controller
     {
         $college = College::find($id);
         $college->delete();
-        return back()->with('success', 'College deleted successfully.');
+        return redirect()->route('colleges.index')->with('success', 'College deleted successfully.');
     }
 
 }

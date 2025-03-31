@@ -4,8 +4,6 @@ function updateUrlParams(param, value) {
     let collegeId = urlParams.get('college_id');
     let url = ""
 
-    console.log("S: " + sort + " C: " + collegeId);
-
     if(param === 'sort_order'){
         url = url +'?sort_order=' + value;
         if(collegeId != null){
@@ -37,19 +35,29 @@ document.getElementById('filter_college_id').addEventListener('change', function
 });
 
 document.getElementById('sort_student').addEventListener('click', function () {
+    event.preventDefault();
+
     let urlParams = new URLSearchParams(window.location.search);
     let currentSort = urlParams.get('sort_order');
 
-    var nextSort = 'none';
+    console.log(currentSort);
+
+    // var nextSort = 'none';
 
     if (currentSort === 'asc') {
         nextSort = 'desc';
+        console.log("currentSort: " + currentSort);
+        console.log("nextSort: " + nextSort);
     }
     else if (currentSort === 'desc') {
         nextSort = 'none';
+        console.log("currentSort: " + currentSort);
+        console.log("nextSort: " + nextSort);
     }
     else {
         nextSort = 'asc';
+        console.log("currentSort: " + currentSort);
+        console.log("nextSort: " + nextSort);
     }
 
     // Update URL without affecting filters
