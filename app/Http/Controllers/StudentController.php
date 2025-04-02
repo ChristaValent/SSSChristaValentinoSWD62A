@@ -11,12 +11,13 @@ class StudentController extends Controller
     //show all students
     public function index()
     {
+        // Get all colleges for the filter dropdown
         $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
-        $sortOrder = request('sort_order');
+        $sortOrder = request('sort_order'); // Get the sort order from the request
         
         $studentsQuery = Student::query();
 
-        if (request('college_id')) {
+        if (request('college_id')) { //get the students with the selected college
             $studentsQuery = Student::where('college_id', request('college_id'));
         } 
 
@@ -27,6 +28,7 @@ class StudentController extends Controller
             $studentsQuery->orderBy('id'); // Default sorting by student ID
         }
 
+        // Get the students based on the query
         $students = $studentsQuery->get();
 
         return view('students.index', compact('students', 'colleges'));
@@ -35,8 +37,8 @@ class StudentController extends Controller
     //create a new student
     public function create()
     {
-        $student = new Student();
-        $colleges = College::orderBy('name')->pluck('name', 'id');
+        $student = new Student(); //create a new student
+        $colleges = College::orderBy('name')->pluck('name', 'id'); 
         return view('students.create', compact('student', 'colleges'));
     }
 
@@ -51,22 +53,22 @@ class StudentController extends Controller
             'college_id' => 'required',
         ]);
 
-        Student::create($request->all());
+        Student::create($request->all()); //create a new student with the data inputted by the user
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
 
     //show a specific student
     public function show($id)
     {
-        $student = Student::find($id);
+        $student = Student::find($id); //find the particular student 
         return view('students.show', compact('student'));
     }
 
     //display edit form
     public function edit($id)
     {
-        $student = Student::find($id);
-        $colleges = College::orderBy('name')->pluck('name', 'id');
+        $student = Student::find($id); //find the particular student
+        $colleges = College::orderBy('name')->pluck('name', 'id'); 
         return view('students.edit', compact('student', 'colleges'));
     }
 
@@ -82,15 +84,15 @@ class StudentController extends Controller
         ]);
 
         $student = Student::find($id); //find the student
-        $student->update($request->all());
+        $student->update($request->all()); //update the student with the data inputted by the user
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
 
     //delete the student
     public function destroy($id)
     {
-        $student = Student::find($id);
-        $student->delete();
+        $student = Student::find($id); //find the student
+        $student->delete(); //delete the student
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }
 }

@@ -45,20 +45,20 @@
                                                             title="Edit">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <form id="form-delete"
-                                                            action="{{ route('colleges.destroy', $college->id) }}"
-                                                            method="POST" style="display: inline-block;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn-delete btn btn-link btn-danger"
-                                                                data-bs-toggle="tooltip" title="Delete">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </form>
+                                                        <a href="{{ route('colleges.destroy', $college->id) }}"
+                                                            class="btn btn-delete btn-link btn-danger btn-md"
+                                                            data-bs-toggle="tooltip" title="delete">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <form id="form-delete" action="{{ route('colleges.destroy', $college->id) }}"
+                                            method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     @endif
                                 </tbody>
                             </table>

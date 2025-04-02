@@ -24,19 +24,19 @@
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <p class="form-control-static">{{ $college->address }}</p>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
                         <a href="{{ route('colleges.index') }}" class="btn btn-success">Back</a>
                         <a href="{{ route('colleges.edit', $college->id) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('colleges.destroy', $college->id) }}" method="POST" class="d-inline btn-delete">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <a href="{{ route('colleges.destroy', $college->id) }}" class="btn btn-danger btn-delete">Delete</a>
                     </div>
+                    <form id="form-delete" method="POST" style="display:none">
+                        @method('DELETE')
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

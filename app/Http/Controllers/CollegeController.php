@@ -33,7 +33,7 @@ class CollegeController extends Controller
             'address' => 'required'
         ]);
 
-        College::create($request->all());
+        College::create($request->all()); //create a new college with the data inputted by the user
         return redirect()->route('colleges.index')->with('success', 'College created successfully.');
     }
 
@@ -48,6 +48,7 @@ class CollegeController extends Controller
     //display edit form
     public function edit($id)
     {
+        //find the particular college
         $college = College::find($id);
         return view('colleges.edit', compact('college'));
     }
@@ -61,16 +62,16 @@ class CollegeController extends Controller
             'address' => 'required'
         ]);
 
-        $college = College::find($id);
-        $college->update($request->all());
+        $college = College::find($id); //find the college
+        $college->update($request->all()); //update the college with the data inputted by the user
         return redirect()->route('colleges.index')->with('success', 'College updated successfully.');
     }
 
     //delete the college
     public function destroy($id)
     {
-        $college = College::find($id);
-        $college->delete();
+        $college = College::find($id); //find the college
+        $college->delete(); //delete the college (students related to it will be deleted too)
         return redirect()->route('colleges.index')->with('success', 'College deleted successfully.');
     }
 
